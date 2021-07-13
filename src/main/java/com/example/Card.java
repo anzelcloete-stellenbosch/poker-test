@@ -10,6 +10,7 @@ public class Card implements Comparable<Object>{
     private final Ranks rank;
     
     public Card(Suits suit, Ranks rank){
+    	//Every card is defined by a Suit and a Rank
         this.suit = suit;
         this.rank = rank;
     }

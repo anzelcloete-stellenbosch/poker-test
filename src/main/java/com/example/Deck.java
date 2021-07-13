@@ -11,6 +11,7 @@ public class Deck {
     private final Stack<Card> cards = new Stack<Card>();
     
     public Deck(){
+    	//Initialize all the different ranks for each suit in the deck
         for (Suits suit : Suits.values()) {
             for (Ranks rank : Ranks.values()) {
                 cards.push(new Card(suit, rank));
@@ -22,7 +23,7 @@ public class Deck {
         return cards;
     }
     
-    //A function to randomlu change the order of the cards in the deck
+    //A function to randomly change the order of the cards in the deck
     public void shuffle(){
         for(int i=0; i< cards.size(); i++){
             int j = (int)(Math.random() * ((cards.size())));
@@ -38,7 +39,7 @@ public class Deck {
         if(length < cards.size()){
             Card[] hand = new Card[length];
             for(int i = 0; i<length; i++){
-                hand[i] = cards.pop();
+                hand[i] = cards.get(i);
             }
             return hand;            
         }

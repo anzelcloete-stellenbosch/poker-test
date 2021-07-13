@@ -16,17 +16,14 @@ public class Poker {
      */
     public static void main(String[] args) {
         Deck deck = new Deck();     
-        System.out.println(deck);
         
         myObj = new Scanner(System.in);
         String exit;
-        //For the purpose of the game, I draw 5 cards from the deck with every iteration
-        //without putting them back in.
-        //They game ends if there are no more cards left for a full hand or if the player quits.
+
         do{
             deck.shuffle();
             System.out.println("Shuffling...");
-            Card[] handOfFive = deck.dealHand(5);
+            Card[] handOfFive = deck.dealHand(5); //Dealing 5 cards for a hand, it can be changed
             if(handOfFive != null){
                 Arrays.sort(handOfFive);
                 System.out.println("Your hand: " + Arrays.toString(handOfFive));

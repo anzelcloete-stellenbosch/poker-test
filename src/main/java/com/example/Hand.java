@@ -55,7 +55,9 @@ public class Hand {
             int current = hand[i].getRank().getId();
             int next = hand[i + 1].getRank().getId();
 
-            if (next > current + 1 && !(current == 1 && next == 10)) {
+            if (next > current + 1 && !(current == 1 && next == 10)) { 
+            	// Added the second part of the condition specifically for a royal straight 
+            	//i.e ACE,TEN,JACK,QUEEN,KING
                 //if next card is more than one greater it is not a straight
                 isStraight = false;
                 break;
@@ -183,7 +185,7 @@ public class Hand {
     }
 
     public static boolean isRoyalFlush(Card[] hand, int[] suits) {
-        //evaluates if card is straight and flush and last card is an ace
+        //evaluates if card is straight and flush and first card is an ace
         return (isStraight(hand) && isFlush(suits) && hand[0].getRank() == Ranks.ACE);
     }
 
