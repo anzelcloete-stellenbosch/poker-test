@@ -9,25 +9,25 @@ public class Hand {
     public static String handType(Card[] hand) {
         int[] values = tallyValues(hand);
         int[] suits = tallySuits(hand);
-        if (isFourOfAKind(values)) {
-            return "Four of a Kind";
-        } else if (isFullHouse(values)) {
-            return "Full House";
-        } else if (isPair(values)) {
-            return "One Pair";
-        } else if (isTwoPair(values)) {
-            return "Two Pair";
-        } else if (isThreeOfAKind(values)) {
-            return "Three of a Kind";
-        } else if (isRoyalFlush(hand, suits)) {
+        if (isRoyalFlush(hand, suits)) {
             return "Royal Flush";
         } else if (isStraightFlush(hand, suits)) {
             return "Straight Flush";
+        } else if (isFourOfAKind(values)) {
+            return "Four of a Kind";
+        } else if (isFullHouse(values)) {
+            return "Full House";
         } else if (isFlush(suits)) {
             return "Flush";
         } else if (isStraight(hand)) {
             return "Straight";
-        }  else {
+        } else if (isThreeOfAKind(values)) {
+            return "Three of a Kind";
+        } else if (isTwoPair(values)) {
+            return "Two Pair";
+        } else if (isPair(values)) {
+            return "One Pair";
+        } else {
             return "High Card";
         }
     }
@@ -44,13 +44,9 @@ public class Hand {
             return false;
         }
         boolean isStraight = true;
-        /*repeat stores how many times the next card in sequence can be the same
-         * while still having a straight be possible*/
-        int repeats = hand.length - 5;
-        //I.E, if a hand has 7 cards, two cards can repeat once.
 
         int i = 0;
-        while (i < hand.length - 1 && repeats >= 0) {
+        while (i < hand.length - 1) {
             //looks at next and current card value
             int current = hand[i].getRank().getId();
             int next = hand[i + 1].getRank().getId();
@@ -62,15 +58,7 @@ public class Hand {
                 isStraight = false;
                 break;
             }
-            if (next == current) {
-                //if next is same as current decrement repeat
-                repeats--;
-            }
             i++;
-        }
-        if (!isStraight && hand.length > 5) {
-            //call isStraight() on hand from indexes one to the end of the array
-            return isStraight(Arrays.copyOfRange(hand, 1, hand.length));
         }
         return isStraight;
     }
@@ -93,7 +81,7 @@ public class Hand {
 
     public static int[] tallyValues(Card[] hand) {
         //Storing a tally of each value of card
-        int[] values = new int[15];
+        int[] values = new int[14];
         for (int i = 0; i < hand.length; i++) {
             /*increments value at that index(adds to tally) and adds it to tally array*/
 
