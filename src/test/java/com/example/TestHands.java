@@ -3,10 +3,6 @@ package com.example;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.example.Card;
-import com.example.Hand;
-import com.example.Ranks;
-import com.example.Suits;
 /**
  *
  * @author Anzel
